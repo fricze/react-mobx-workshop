@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react";
-import { ApplicationFormView } from "./App";
+import { ApplicationFormView } from "./ApplicationForm";
 
 export default {
   title: "Student Application",
