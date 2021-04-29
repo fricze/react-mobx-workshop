@@ -6,6 +6,11 @@ interface SetValue {
 
 interface InputProps extends SetValue, StandardTextFieldProps {}
 
-export const Input = ({ setValue, ...props }: InputProps) => (
-  <TextField {...props} onChange={(e) => setValue(e.target.value)} />
+export const Input = ({ setValue, error, ...props }: InputProps) => (
+  <TextField
+    {...props}
+    error={!!error}
+    helperText={error}
+    onChange={(e) => setValue(e.target.value)}
+  />
 );
