@@ -6,7 +6,10 @@ type DomainV = DomainStore[DomainK];
 
 // computed/derived data
 const deriveUiStore = (store: DomainStore): UiStore => ({
-  names: { value: store.firstName + " " + store.lastName, label: "Name" },
+  names: {
+    value: store.firstName + (store.middleName ? " " + store.middleName : ""),
+    label: "Name",
+  },
   lastName: { value: store.lastName, label: "Last name" },
   sex: { value: store.sex, label: "Sex" },
 
@@ -36,6 +39,18 @@ export const useApplicationState = () => {
       };
     });
 
+  const setNames = (value: string) => {
+    const [firstName, middleName] = value.split(/ (.+)/);
+
+    setApplicationState((applicationData) => {
+      return {
+        ...applicationData,
+        firstName: middleName ? firstName.trim() : value,
+        middleName: middleName || "",
+      };
+    });
+  };
+
   const onSubmit = () => {
     console.log("onSubmit");
   };
@@ -44,5 +59,6 @@ export const useApplicationState = () => {
     setProp,
     application: deriveUiStore(application),
     onSubmit,
+    setNames,
   };
 };

@@ -9,12 +9,14 @@ import { FormElement } from "../../ui/FormElement";
 interface ApplicationFormProps {
   store: UiStore;
   setProp: setProp;
+  setNames: any;
   onSubmit: any;
 }
 
 const ApplicationForm = ({
   store,
   setProp,
+  setNames,
   onSubmit,
 }: ApplicationFormProps) => {
   return (
@@ -23,7 +25,7 @@ const ApplicationForm = ({
         <Input
           label={store.names.label}
           value={store.names.value}
-          setValue={(value: string) => setProp("firstName", value)}
+          setValue={(value: string) => setNames(value)}
         />
       </FormElement>
 
@@ -51,12 +53,13 @@ const ApplicationForm = ({
 };
 
 export const ApplicationFormContainer = () => {
-  const { setProp, application, onSubmit } = useApplicationState();
+  const { setNames, setProp, application, onSubmit } = useApplicationState();
   return (
     <ApplicationForm
       setProp={setProp}
       store={application}
       onSubmit={onSubmit}
+      setNames={setNames}
     />
   );
 };
