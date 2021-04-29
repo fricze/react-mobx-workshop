@@ -12,7 +12,7 @@ interface ApplicationFormProps {
   onSubmit: any;
 }
 
-export const ApplicationForm = ({
+const ApplicationForm = ({
   store,
   setProp,
   onSubmit,

@@ -1,23 +1,6 @@
-import { Sex } from "../types/PersonalData";
 import { ApplicationData } from "../types/ApplicationData";
 import { ApplicationForm } from "./ui-state";
-
-const initialApplication: ApplicationData = {
-  firstName: "",
-  lastName: "",
-  middleName: "",
-  sex: Sex.Male,
-
-  address: "",
-  country: "",
-  phone: "",
-  email: "",
-
-  birthDate: "",
-  citizenship: "",
-  needVisa: false,
-  passportNo: "",
-};
+import { initialApplication } from "./domain-state";
 
 export type DomainStore = ApplicationData;
 export type UiStore = ApplicationForm;
