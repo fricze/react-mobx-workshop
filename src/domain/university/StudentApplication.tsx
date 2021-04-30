@@ -32,3 +32,17 @@ export const StudentApplication = () => {
     </Container>
   );
 };
+
+export const SingleStudentApplication = () => {
+  const applicationStore = new ApplicationStore();
+
+  return (
+    <Container maxWidth="md">
+      <Title>International applicants form</Title>
+
+      <PersonalDataForm store={applicationStore} />
+
+      <ContactDataForm store={applicationStore} />
+    </Container>
+  );
+};

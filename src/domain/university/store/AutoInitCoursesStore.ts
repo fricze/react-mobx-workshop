@@ -1,4 +1,4 @@
-import { onBecomeObserved } from "mobx";
+import { onBecomeObserved, onBecomeUnobserved } from "mobx";
 
 import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
@@ -16,6 +16,7 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
 
   constructor(autoInit?: boolean) {
     makeAutoObservable(this, {}, { autoBind: true });
+
     if (autoInit) {
       onBecomeObserved(this, "courses", this.getFirstPage);
     }
