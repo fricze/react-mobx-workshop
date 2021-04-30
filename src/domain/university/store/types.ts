@@ -58,3 +58,18 @@ export interface CoursesData {
 export interface FetchMoreCourses {
   fetchMore: () => void;
 }
+
+export enum Tab {
+  Personal = "Personal data",
+  Contact = "Contact data",
+}
+
+export const TabValues = Object.values(Tab);
+
+export interface TabGroup {
+  activeTab: Tab;
+}
+
+export interface SetTab {
+  setTab(tab: TabGroup[keyof TabGroup]): void;
+}

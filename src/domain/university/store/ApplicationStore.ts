@@ -110,6 +110,9 @@ export class ApplicationStore
     console.log(this.application);
   }
 
+  validatePersonalData() {}
+  validateContactData() {}
+
   setProp<K extends keyof ApplicationData>(
     this: ApplicationStore,
     key: K,

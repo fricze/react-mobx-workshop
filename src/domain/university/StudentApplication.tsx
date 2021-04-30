@@ -8,6 +8,9 @@ import { CoursesList } from "./components/CoursesList";
 
 import { ApplicationStore } from "./store/ApplicationStore";
 import { CoursesStore } from "./store/CoursesStore";
+import { UiStore } from "./store/UiStore";
+import { ApplicationFormTabs } from "./components/ApplicationFormTabs";
+import { ApplicationFormContent } from "./components/ApplicationFormContent";
 
 export const StudentApplication = () => {
   const applicationStore = new ApplicationStore();
@@ -35,14 +38,18 @@ export const StudentApplication = () => {
 
 export const SingleStudentApplication = () => {
   const applicationStore = new ApplicationStore();
+  const uiStore = new UiStore();
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="sm">
       <Title>International applicants form</Title>
 
-      <PersonalDataForm store={applicationStore} />
+      <ApplicationFormContent
+        applicationStore={applicationStore}
+        uiStore={uiStore}
+      />
 
-      <ContactDataForm store={applicationStore} />
+      <ApplicationFormTabs store={uiStore} />
     </Container>
   );
 };
