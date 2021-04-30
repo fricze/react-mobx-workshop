@@ -13,9 +13,11 @@ import { UiStore } from "./store/UiStore";
 import { ApplicationFormTabs } from "./components/ApplicationFormTabs";
 import { ApplicationFormContent } from "./components/ApplicationFormContent";
 
+import { getCourses } from "../../infrastructure/services/Courses";
+
 export const StudentApplication = () => {
   const applicationStore = new ApplicationStore();
-  const coursesStore = new CoursesStore(true);
+  const coursesStore = new CoursesStore(getCourses, true);
   const uiStore = new UiStore();
 
   return (

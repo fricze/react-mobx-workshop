@@ -1,5 +1,4 @@
 import { onBecomeObserved, onBecomeUnobserved } from "mobx";
-
 import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 import {
@@ -8,18 +7,24 @@ import {
   CourseState,
   CoursesList,
 } from "./types";
-import { getCourses } from "../../../infrastructure/services/Courses";
+
+import { Response } from "../../../infrastructure/services/Courses";
+
+type GetCourses = ({ page }: { page: number }) => Response;
 
 export class CoursesStore implements CoursesData, FetchMoreCourses {
   courses: CoursesList = [];
+
   private nextPage?: number = 0;
 
-  constructor(autoInit?: boolean) {
+  getCourses?: GetCourses;
+
+  constructor(getCourses: GetCourses, autoInit?: boolean) {
+    this.getCourses = getCourses;
     makeAutoObservable(this, {}, { autoBind: true });
 
     if (autoInit) {
       onBecomeObserved(this, "courses", this.getFirstPage);
-
       onBecomeUnobserved(this, "courses", this.clear);
     }
   }
@@ -57,9 +62,11 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
 
       this.courses.push(...skeletons);
 
-      getCourses({ page: this.nextPage })
-        .then((r) => r.json())
-        .then(this.fetchMoreSuccess);
+      if (this.getCourses) {
+        this.getCourses({ page: this.nextPage })
+          .then((r) => r.json())
+          .then(this.fetchMoreSuccess);
+      }
     }
   }
 

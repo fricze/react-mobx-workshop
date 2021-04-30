@@ -25,5 +25,3 @@ test("Simple setter works and validation works", () => {
     value: "Ju",
   });
 });
-
-export {};

@@ -35,15 +35,15 @@ export const getCourses = ({ page }: { page: number }): Response => {
   const nextPage = !!pagedCourse[page + 1];
 
   return new Promise((resolve) => {
-    setTimeout(() => resolve(response({ list, nextPage })), 500);
+    resolve(response({ list, nextPage }));
   });
 };
 
-export const getAllCourses = (): Response => {
+export const getCoursesEmpty = ({ page }: { page: number }): Response => {
+  const list: string[] = [];
+  const nextPage = false;
+
   return new Promise((resolve) => {
-    setTimeout(
-      () => resolve(response({ list: courses, nextPage: false })),
-      500
-    );
+    resolve(response({ list, nextPage }));
   });
 };
