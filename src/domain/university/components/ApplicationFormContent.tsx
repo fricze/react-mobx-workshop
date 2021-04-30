@@ -11,18 +11,17 @@ interface ApplicationFormTabsProps {
     Types.PersonalDataForm;
 }
 
-export const ApplicationFormContent = observer(({
-  uiStore,
-  applicationStore,
-}: ApplicationFormTabsProps) => {
-  const { activeTab } = uiStore;
+export const ApplicationFormContent = observer(
+  ({ uiStore, applicationStore }: ApplicationFormTabsProps) => {
+    const { activeTab } = uiStore;
 
-  switch (activeTab) {
-    case Types.Tab.Personal:
-      return <PersonalDataForm store={applicationStore} />;
-    case Types.Tab.Contact:
-      return <ContactDataForm store={applicationStore} />;
-    default:
-      return <div />;
+    switch (activeTab) {
+      case Types.Tab.Personal:
+        return <PersonalDataForm store={applicationStore} />;
+      case Types.Tab.Contact:
+        return <ContactDataForm store={applicationStore} />;
+      default:
+        return <div />;
+    }
   }
-});
+);

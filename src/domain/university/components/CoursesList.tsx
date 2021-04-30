@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { observer } from "mobx-react-lite";

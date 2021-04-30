@@ -73,3 +73,11 @@ export interface TabGroup {
 export interface SetTab {
   setTab(tab: TabGroup[keyof TabGroup]): void;
 }
+
+export interface ShowCourses {
+  coursesList: boolean;
+}
+
+export interface ToggleCourses {
+  toggleCoursesList: () => void;
+}

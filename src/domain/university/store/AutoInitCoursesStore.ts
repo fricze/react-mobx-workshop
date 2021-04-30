@@ -19,7 +19,14 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
 
     if (autoInit) {
       onBecomeObserved(this, "courses", this.getFirstPage);
+
+      onBecomeUnobserved(this, "courses", this.clear);
     }
+  }
+
+  private clear() {
+    this.nextPage = 0;
+    this.courses = [];
   }
 
   private getFirstPage() {
