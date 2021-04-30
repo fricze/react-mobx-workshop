@@ -2,6 +2,7 @@ import { onBecomeObserved, onBecomeUnobserved } from "mobx";
 import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 import {
+  SetActiveCourse,
   FetchMoreCourses,
   CoursesData,
   CourseState,
@@ -12,10 +13,12 @@ import { Response } from "../../../infrastructure/services/Courses";
 
 type GetCourses = ({ page }: { page: number }) => Response;
 
-export class CoursesStore implements CoursesData, FetchMoreCourses {
+export class CoursesStore
+  implements SetActiveCourse, CoursesData, FetchMoreCourses {
   courses: CoursesList = [];
 
   private nextPage?: number = 0;
+  activeCourse?: string;
 
   getCourses?: GetCourses;
 
@@ -72,5 +75,9 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
 
   get nextPageAvailable() {
     return this.nextPage !== undefined && Number.isInteger(this.nextPage);
+  }
+
+  setActive(course: string) {
+    this.activeCourse = course;
   }
 }

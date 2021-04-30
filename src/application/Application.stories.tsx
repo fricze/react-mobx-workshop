@@ -5,6 +5,9 @@ import {
   SingleStudentApplication,
   StudentApplication,
 } from "../domain/university/StudentApplication";
+
+import { StudentApplicationWithDownshift } from "../domain/university/StudentApplicationWithDownshift";
+
 import { AvailableCourses } from "../domain/university/AvailableCourses";
 
 export default {
@@ -17,3 +20,4 @@ export const EditArticleForm = () => <EditArticlePage />;
 export const MobxForm = () => <StudentApplication />;
 export const MobxAvailableCourses = () => <AvailableCourses />;
 export const MobxSingleForm = () => <SingleStudentApplication />;
+export const MobxWithDownshift = () => <StudentApplicationWithDownshift />;

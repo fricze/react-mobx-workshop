@@ -8,7 +8,7 @@ import { ContactDataForm } from "./components/ContactDataForm";
 import { CoursesView } from "./components/CoursesView";
 
 import { ApplicationStore } from "./store/ApplicationStore";
-import { CoursesStore } from "./store/AutoInitCoursesStore";
+import { CoursesStore } from "./store/CoursesStore";
 import { UiStore } from "./store/UiStore";
 import { ApplicationFormTabs } from "./components/ApplicationFormTabs";
 import { ApplicationFormContent } from "./components/ApplicationFormContent";
@@ -17,7 +17,7 @@ import { getCourses } from "../../infrastructure/services/Courses";
 
 export const StudentApplication = () => {
   const applicationStore = new ApplicationStore();
-  const coursesStore = new CoursesStore(getCourses, true);
+  const coursesStore = new CoursesStore();
   const uiStore = new UiStore();
 
   return (
@@ -50,15 +50,19 @@ export const SingleStudentApplication = () => {
   const uiStore = new UiStore();
 
   return (
-    <Container maxWidth="sm">
-      <Title>International applicants form</Title>
+    <Container maxWidth="md">
+      <Grid container>
+        <Grid item xs={7}>
+          <Title>International applicants form</Title>
 
-      <ApplicationFormContent
-        applicationStore={applicationStore}
-        uiStore={uiStore}
-      />
+          <ApplicationFormContent
+            applicationStore={applicationStore}
+            uiStore={uiStore}
+          />
 
-      <ApplicationFormTabs store={uiStore} />
+          <ApplicationFormTabs store={uiStore} />
+        </Grid>
+      </Grid>
     </Container>
   );
 };
