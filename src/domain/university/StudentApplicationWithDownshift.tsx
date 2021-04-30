@@ -9,10 +9,11 @@ import { CoursesDropdown } from "./components/CoursesDropdown";
 
 import { ApplicationStore } from "./store/ApplicationStore";
 import { CoursesStore } from "./store/AutoInitCoursesStore";
+import { getCourses } from "../../infrastructure/services/Courses";
 
 export const StudentApplicationWithDownshift = () => {
   const applicationStore = new ApplicationStore();
-  const coursesStore = new CoursesStore(true);
+  const coursesStore = new CoursesStore(getCourses, true);
 
   return (
     <Container maxWidth="md">
