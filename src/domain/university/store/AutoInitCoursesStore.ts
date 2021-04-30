@@ -14,9 +14,11 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
   courses: CoursesList = [];
   private nextPage?: number = 0;
 
-  constructor() {
+  constructor(autoInit?: boolean) {
     makeAutoObservable(this, {}, { autoBind: true });
-    onBecomeObserved(this, "courses", this.getFirstPage);
+    if (autoInit) {
+      onBecomeObserved(this, "courses", this.getFirstPage);
+    }
   }
 
   private getFirstPage() {
