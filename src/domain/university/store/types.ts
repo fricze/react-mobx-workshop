@@ -18,7 +18,7 @@ interface MPersonalDataForm {
 export type PersonalDataForm = Readonly<MPersonalDataForm>;
 
 export interface PersonalDataSetProp {
-  setProp<K extends keyof PersonalData>(
+  setProp<K extends keyof MPersonalDataForm>(
     this: MPersonalDataForm,
     key: K,
     value: PersonalData[K]
@@ -35,8 +35,8 @@ interface MContactDataForm {
 export type ContactDataForm = Readonly<MContactDataForm>;
 
 export interface ContactDataSetProp {
-  setProp<K extends keyof ContactDataForm>(
-    this: ContactDataForm,
+  setProp<K extends keyof MContactDataForm>(
+    this: MContactDataForm,
     key: K,
     value: ContactData[K]
   ): void;

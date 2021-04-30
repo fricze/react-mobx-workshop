@@ -25,14 +25,14 @@ export class ApplicationStore
     makeAutoObservable(this, {}, { autoBind: true });
   }
 
-  get names() {
-    const { firstName } = this.application;
-    return {
-      label: "First name",
-      value: firstName,
-      valid: firstName.length > 3,
-    };
-  }
+  // get names() {
+  //   const { firstName } = this.application;
+  //   return {
+  //     label: "First name",
+  //     value: firstName,
+  //     valid: firstName.length > 3,
+  //   };
+  // }
 
   get firstName() {
     const { firstName } = this.application;

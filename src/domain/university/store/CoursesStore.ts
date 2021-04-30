@@ -31,7 +31,7 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
   fetchMore() {
     if (this.nextPage !== undefined && Number.isInteger(this.nextPage)) {
       const skeletons = new Array(3).fill(0).map(() => ({
-        title: "empty title",
+        title: "",
         state: CourseState.Loading,
         id: uuid(),
       }));
