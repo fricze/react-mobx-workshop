@@ -53,10 +53,15 @@ export type CoursesList = CourseView[];
 export interface CoursesData {
   courses: CoursesList;
   nextPageAvailable: boolean;
+  activeCourse?: string;
 }
 
 export interface FetchMoreCourses {
   fetchMore: () => void;
+}
+
+export interface SetActiveCourse {
+  setActive: (course: string) => void;
 }
 
 export enum Tab {

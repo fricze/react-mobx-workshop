@@ -3,6 +3,7 @@ import { onBecomeObserved, onBecomeUnobserved } from "mobx";
 import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 import {
+  SetActiveCourse,
   FetchMoreCourses,
   CoursesData,
   CourseState,
@@ -10,9 +11,11 @@ import {
 } from "./types";
 import { getCourses } from "../../../infrastructure/services/Courses";
 
-export class CoursesStore implements CoursesData, FetchMoreCourses {
+export class CoursesStore
+  implements SetActiveCourse, CoursesData, FetchMoreCourses {
   courses: CoursesList = [];
   private nextPage?: number = 0;
+  activeCourse?: string;
 
   constructor(autoInit?: boolean) {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -65,5 +68,9 @@ export class CoursesStore implements CoursesData, FetchMoreCourses {
 
   get nextPageAvailable() {
     return this.nextPage !== undefined && Number.isInteger(this.nextPage);
+  }
+
+  setActive(course: string) {
+    this.activeCourse = course;
   }
 }
