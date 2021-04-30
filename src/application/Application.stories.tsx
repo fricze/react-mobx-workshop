@@ -2,6 +2,7 @@ import { Meta } from "@storybook/react";
 import { ApplicationFormView } from "./ApplicationForm";
 import { EditArticlePage } from "./EditArticleReducers";
 import { StudentApplication } from "../domain/university/StudentApplication";
+import { AvailableCourses } from "../domain/university/AvailableCourses";
 
 export default {
   title: "Student Application",
@@ -11,3 +12,4 @@ export default {
 export const ApplicationForm = () => <ApplicationFormView />;
 export const EditArticleForm = () => <EditArticlePage />;
 export const MobxForm = () => <StudentApplication />;
+export const MobxAvailableCourses = () => <AvailableCourses />;
